@@ -1,0 +1,65 @@
+* {
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+a {
+    color: currentColor
+}
+
+#app {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    background-color: #333;
+    user-select: none;
+}
+
+
+code {
+    border-radius: 5px;
+    text-align: left;
+    background: #262626;
+    padding: 9px 12px;
+    margin: 4px 2px;
+    color: #ffffff;
+    overflow: auto;
+    white-space: pre;
+    user-select: text;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace;
+
+    .num {
+        color: #b5cea8;
+    }
+
+    .str {
+        color: #ce9178
+    }
+
+    .color {
+        display: inline-block;
+        background-color: #fff;
+        width: 14px;
+        height: 14px;
+    }
+
+    &::-webkit-scrollbar {
+        height: 5px
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #bbb;
+        border-radius: 5px
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: #888
+    }
+
+    &::selection {
+        background-color: #ddd4
+    }
+}
