@@ -1,13 +1,16 @@
 <script setup>
 import { computed, ref } from 'vue';
-import { voxelsTextureInfo } from '../scripts/voxels';
+import { voxelsTextureInfo, getAllVoxels } from '../scripts/voxels';
 import Voxel from '../components/Voxel.vue';
 import Header from '../components/Header.vue';
 import { lightTexture, dynamicTexture } from '../stores/Index';
 
 const selectId = ref(0);
-const search = ref("")
+const search = ref("");
 const voxelsData = computed(() => {
+    if (selectId.value == -1) {
+        return getAllVoxels().filter(v => v[0].includes(search.value));
+    }
     return voxelsTextureInfo[selectId.value][1].filter(v => v[0].includes(search.value));
 })
 </script>
@@ -22,6 +25,7 @@ const voxelsData = computed(() => {
         </label>
     </Header>
     <div class="sidebar">
+        <div @click="selectId = -1" :selected="selectId == -1 ? '' : void 0">全部</div>
         <div v-for="([name], index) in voxelsTextureInfo" @click="selectId = index"
             :selected="selectId == index ? '' : void 0">
             {{ name }}
@@ -30,6 +34,7 @@ const voxelsData = computed(() => {
     <main>
         <input class="search" placeholder="搜索方块" v-model="search" />
         <div class="voxels-list">
+            <span style="margin: 0 8px 24px; width: 100%">共 {{ voxelsData.length }} 个方块</span>
             <router-link v-for="data in voxelsData" :to="'/' + data[0]">
                 <Voxel :textures="data[1]" :animate="dynamicTexture" style="pointer-events: none;"
                     :light="lightTexture" />

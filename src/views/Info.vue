@@ -1,6 +1,6 @@
 <script setup>
 import Header from '../components/Header.vue';
-import { voxelsTextureInfo, voxelsNameToId, transparentVoxels, lightVoxelsLevel, voxelsFriction, voxelsVelocity, voxelsEmissive } from '../scripts/voxels';
+import { getAllVoxels, voxelsNameToId, transparentVoxels, lightVoxelsLevel, voxelsFriction, voxelsVelocity, voxelsEmissive } from '../scripts/voxels';
 import Voxel from '../components/Voxel.vue';
 import { computed, onMounted, ref, watch } from 'vue';
 import { lightTexture, dynamicTexture } from '../stores/Index';
@@ -9,7 +9,7 @@ import { useRoute, useRouter } from 'vue-router';
 const route = useRoute(), router = useRouter();
 
 const voxelTextures = computed(() => {
-    return voxelsTextureInfo.reduce((a, b) => [].concat(a, b[1]), []).find(v => v[0] == route.params.name)?.[1];
+    return getAllVoxels().find(v => v[0] == route.params.name)?.[1];
 })
 const voxelId = computed(() => {
     return voxelsNameToId[route.params.name]
