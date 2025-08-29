@@ -1,0 +1,1 @@
+import{_ as r,c as s,a as n,b as a,J as l,w as d,i as c,o as f,j as i}from"./index-CMP9gB_c.js";const u={};function _(t,e){const o=c("router-link");return f(),s("header",null,[n(o,{to:"/"},{default:d(()=>[...e[0]||(e[0]=[i("神奇代码岛 方块查看器",-1)])]),_:1}),e[1]||(e[1]=a("div",{style:{flex:"1"}},null,-1)),l(t.$slots,"default")])}const p=r(u,[["render",_]]);export{p as H};
