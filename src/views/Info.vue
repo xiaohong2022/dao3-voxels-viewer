@@ -138,7 +138,7 @@ voxelPositionChange(codeZ);
                 </div>
             </template>
             <div v-else :selected="mode == 0 ? '' : void 0" @click="mode = 0; dragable = true">静止</div>
-            <div :selected="mode == -1 ? '' : void 0" @click="mode = -1; dragable = false">旋转</div>
+            <div :selected="mode == -1 ? '' : void 0" @click="mode = -1; dragable = true">旋转</div>
             <div v-if="rotateX || rotateY" @click="rotateX = 0; rotateY = 0">复位</div>
         </div>
         <main>
