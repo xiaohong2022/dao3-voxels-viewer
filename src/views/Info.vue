@@ -162,35 +162,42 @@ voxelPositionChange(codeZ);
                 </div>
                 <div class="info-item" v-if="isFluid && voxelId != 0">
                     <span>液体颜色：</span>
-                    <code>
-                <span class="color" :style="{ background: fluidColor }"></span> {{ fluidColor }}
-            </code>
+                    <code style="display: table">
+                <span class="color" :style="{ background: fluidColor }" style="vertical-align: middle; margin: 0 6px 2px 0;"></span>
+                <span class="method">rgba</span>(<span class="num">{{ fluidColor.split(', ')[0].split('(')[1] }}</span>,
+                <span class="num">{{ fluidColor.split(', ')[1] }}</span>,
+                <span class="num">{{ fluidColor.split(', ')[2] }}</span>,
+                <span class="num">{{ fluidColor.split(', ')[3].split(')')[0] }}</span>)</code>
+
                 </div>
                 <div class="info-item" v-if="isLight">
-                    <span>光源颜色：</span>
-                    <code>
-                <span class="color" :style="{ background: lightColor }"></span> {{ lightColor }}
-            </code>
+                    <span>光照颜色：</span>
+                    
+                    <code style="display: table">
+                <span class="color" :style="{ background: lightColor }" style="vertical-align: middle; margin: 0 6px 2px 0;"></span>
+                <span class="method">rgb</span>(<span class="num">{{ lightColor.split(', ')[0].split('(')[1] }}</span>,
+                <span class="num">{{ lightColor.split(', ')[1] }}</span>,
+                <span class="num">{{ lightColor.split(', ')[2].split(')')[0] }}</span>)</code>
+
                 </div>
                 <div class="info-item" v-if="isLight">
                     <span>光照等级 (单位: 格)：</span>
-                    <code>{{
-                        Array.isArray(lightLevels) ? `亮圈：${lightLevels[0]}, 暗圈：${lightLevels[1]}`
-                            : lightLevels
-                    }}</code>
+                    <code><template v-if="Array.isArray(lightLevels)">亮圈：<span class="num">{{ lightLevels[0] }}</span>, 暗圈：<span class="num">{{ lightLevels[1] }}</span></template>
+                    <span v-else class="num">{{ lightLevels }}</span></code>
                 </div>
                 <div class="info-item" v-if="isLight">
-                    <span>光照强度：</span>
-                    <code>{{ voxelsEmissive[voxelId] }}</code>
+                    <span>内部光照强度：</span>
+                    <code><span class="num">{{ voxelsEmissive[voxelId] }}</span></code>
                 </div>
                 <div class="info-item" v-if="!isFluid">
                     <span>摩擦力系数：</span>
-                    <code>{{ voxelsFriction[voxelId] }}</code>
+                    <code><span class="num">{{ voxelsFriction[voxelId] }}</span></code>
                 </div>
                 <div class="info-item" v-if="!isFluid">
-                    <span>施加力：</span>
-                    <code>{{ voxelsVelocity[voxelId * 3] }}, {{ voxelsVelocity[voxelId * 3 + 1] }}, {{ voxelsVelocity[voxelId *
-                        3 + 2] }}</code>
+                    <span>施加速度：</span>
+                    <code><span class="num">{{ voxelsVelocity[voxelId * 3] }}</span>,
+                <span class="num">{{ voxelsVelocity[voxelId * 3 + 1] }}</span>,
+                <span class="num">{{ voxelsVelocity[voxelId * 3 + 2] }}</span></code>
                 </div>
             </div>
             <br>

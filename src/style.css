@@ -39,6 +39,14 @@ code {
         color: #ce9178
     }
 
+    .method {
+        color: #dcdcaa
+    }
+
+    .hex {
+        color: #ce9178
+    }
+
     .color {
         display: inline-block;
         background-color: #fff;
