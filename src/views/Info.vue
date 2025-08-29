@@ -185,10 +185,10 @@ voxelPositionChange(codeZ);
                     <code><template v-if="Array.isArray(lightLevels)">亮圈：<span class="num">{{ lightLevels[0] }}</span>, 暗圈：<span class="num">{{ lightLevels[1] }}</span></template>
                     <span v-else class="num">{{ lightLevels }}</span></code>
                 </div>
-                <div class="info-item" v-if="isLight">
-                    <span>内部光照强度：</span>
+                <!-- <div class="info-item" v-if="isLight">
+                    <span>内部 Emissive：</span>
                     <code><span class="num">{{ voxelsEmissive[voxelId] }}</span></code>
-                </div>
+                </div> -->
                 <div class="info-item" v-if="!isFluid">
                     <span>摩擦力系数：</span>
                     <code><span class="num">{{ voxelsFriction[voxelId] }}</span></code>
