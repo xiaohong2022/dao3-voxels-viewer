@@ -2,7 +2,7 @@ import { voxelsNameToId, voxelsTextureInfo } from "../scripts/voxels";
 import { createRouter, createWebHistory } from "vue-router";
 
 export const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHistory('/dao3-voxels-viewer/'),
     routes: [
         {
             path: '/:pathMatch(.*)*',
